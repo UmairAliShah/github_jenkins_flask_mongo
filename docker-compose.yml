@@ -18,10 +18,10 @@ services:
     ports:
     - 27017:27017
     container_name: mongo_database_container
-  jenkins:
-    image: jenkins:v1
-    ports:
-    - 8080:8080
-    - 50000:50000
-    container_name: jenkins_container  
+  #jenkins:
+    #image: jenkins:v1
+    #ports:
+    #- 8080:8080
+    #- 50000:50000
+    #container_name: jenkins_container  
 
