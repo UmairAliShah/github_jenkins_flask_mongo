@@ -1,0 +1,27 @@
+version: '3'
+
+services:
+  web:
+    image: flask_image:v1
+    build: .
+    ports:
+    - 9091:5011/tcp
+    container_name: flask_app_container
+      
+  #web:
+   ## image: flask_image:v1
+   # ports:
+    #- 9091:5011/tcp 
+
+  database:
+    image: mongo
+    ports:
+    - 27017:27017
+    container_name: mongo_database_container
+  jenkins:
+    image: jenkins:v1
+    ports:
+    - 8080:8080
+    - 50000:50000
+    container_name: jenkins_container  
+
