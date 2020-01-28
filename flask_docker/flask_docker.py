@@ -13,7 +13,7 @@ app = Flask(__name__)
 
 @app.route("/")
 def hello():
-    client = MongoClient("54.87.133.253:27017")
+    client = MongoClient("3.83.3.172:27017")
     databases = client.list_database_names()
     for database in databases:
         # databases
