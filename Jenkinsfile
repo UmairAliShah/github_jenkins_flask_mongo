@@ -5,12 +5,13 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                echo 'Building..' + str(${env.BUILD_ID})
+                echo  " Building ${env.BUILD_ID}" 
             }
         }
         stage('Test') {
             steps {
-                echo 'Testing..' + str(${env.JOB_NAME})
+                  
+                 echo "Testing.. ${env.JOB_NAME}"
             }
         }
         stage('Deploy') {
