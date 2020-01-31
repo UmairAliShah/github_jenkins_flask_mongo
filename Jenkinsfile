@@ -3,7 +3,7 @@ pipeline {
     agent any
 environment { 
         DOCKER_HUB_REPO    = "salmanilyas/flask_image"
-        IMAGE_TAG   = "v5"
+        IMAGE_TAG   = "v6"
     }
     stages {
         stage('Config') {
