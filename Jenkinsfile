@@ -1,13 +1,16 @@
 
 pipeline {
     agent any
-
+environment { 
+        DOCKER_HUB_REPO    = "salmanilyas/flask_image}"
+        IMAGE_TAG   = "v3"
+    }
     stages {
         stage('Build') {
             steps {
                 echo  " Building ${env.BUILD_ID}" 
-                sh 'docker build . -t salmanilyas/flask_image:v2'
-                sh 'docker push salmanilyas/flask_image:v2'
+                sh 'docker build . -t $DOCKER_HUB_REPO:$IMAGE_TAG'
+                sh 'docker push $DOCKER_HUB_REPO:$IMAGE_TAG'
                 echo 'image is build and push'
             }
         }
