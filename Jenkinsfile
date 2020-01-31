@@ -25,7 +25,8 @@ environment {
         }
         stage('Deploy') {
             steps {
-                echo 'Deploying....'
+                sh 'docker run -d --name flask_contianer -p 9091:5011 salmanilyas/flask_image:v6'
+                sh 'docker run -d --name mongo_container -p 27017:27017 mongo'
             }
         }
     }
