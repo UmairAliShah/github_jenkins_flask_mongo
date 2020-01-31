@@ -2,7 +2,7 @@
 pipeline {
     agent any
 environment { 
-        DOCKER_HUB_REPO    = "salmanilyas/flask_image}"
+        DOCKER_HUB_REPO    = "salmanilyas/flask_image"
         IMAGE_TAG   = "v3"
     }
     stages {
