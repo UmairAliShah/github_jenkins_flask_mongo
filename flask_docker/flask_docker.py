@@ -10,11 +10,11 @@ import config as config
 
 
 app = Flask(__name__)
-
+mongo = os.environ['mongo']
 
 @app.route("/")
 def hello():
-    client = MongoClient(config.MONGO_CONNECTION)
+    client = MongoClient(str(mongo)+config.MONGO_CONNECTION)
     databases = client.list_database_names()
     for database in databases:
         # databases
