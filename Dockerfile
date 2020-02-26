@@ -10,4 +10,4 @@ RUN pip install -r flask_docker/requirements.txt
 
 EXPOSE 5011
 
-# CMD ["python", "flask_docker/flask_docker.py"]
+CMD ["python", "flask_docker/flask_docker.py"]
