@@ -9,7 +9,6 @@ environment {
         stage('Config') {
             steps {
                 echo 'replacing value in config file'
-                # sh "sed -i 's@<MONGO_CLIENT_IP>@$MONGO_CLIENT_IP@g' flask_docker/config.py"
                 sh "sed -i 's@<MONGO_PORT>@$MONGO_PORT@g' flask_docker/config.py"
                 sh 'cat flask_docker/config.py'
                
