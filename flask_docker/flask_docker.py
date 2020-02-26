@@ -4,6 +4,7 @@ from pymongo import MongoClient
 # pprint library is used to make the output look more pretty
 from pprint import pprint
 import datetime
+import os
 import config as config
 # connect to MongoDB, change the \
 # << MONGODB URL >> to reflect your own connection string
