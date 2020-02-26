@@ -3,7 +3,7 @@ pipeline {
     agent any
 environment { 
         DOCKER_HUB_REPO    = "salmanilyas/flask_image"
-        IMAGE_TAG   = "v6"
+        IMAGE_TAG   = "v100"
     }
     stages {
         stage('Config') {
@@ -25,8 +25,8 @@ environment {
         }
         stage('Deploy') {
             steps {
-                sh 'docker run -d --name flask_contianer -p 9091:5011 salmanilyas/flask_image:v6'
-                sh 'docker run -d --name mongo_container -p 27017:27017 mongo'
+                sh 'docker service create --name flask --replicas 5 --publish 5011:5011 --network my-bridge $DOCKER_HUB_REPO:$IMAGE_TAG'
+                sh 'docker service create --name mongo --network my-bridge mongo'
             }
         }
     }
