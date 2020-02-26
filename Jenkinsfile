@@ -18,14 +18,14 @@ environment {
         stage('Build') {
             steps { 
                 echo  " Building ${env.BUILD_ID}" 
-                sh 'docker build . -t $DOCKER_HUB_REPO:$IMAGE_TAG'
+                sh 'docker build -t $DOCKER_HUB_REPO:$IMAGE_TAG .'
                 sh 'docker push $DOCKER_HUB_REPO:$IMAGE_TAG'
                 echo 'image is build and push'
             }
         }
         stage('Deploy') {
             steps {
-                sh "docker service create --name flask --replicas 5 --publish 5011:5011 -e mongo=mongo --network my-ingress $DOCKER_HUB_REPO:$IMAGE_TAG"
+                sh 'docker service create --name flask --replicas 5 --publish 5011:5011 -e mongo=mongo --network my-ingress $DOCKER_HUB_REPO:$IMAGE_TAG'
                 sh 'docker service create --name mongo --network my-ingress mongo'
             }
         }
