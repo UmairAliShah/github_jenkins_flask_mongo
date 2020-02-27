@@ -1,5 +1,6 @@
 from flask import Flask
 from flask import request
+from flask import jsonify
 from bson.objectid import ObjectId
 from pymongo import MongoClient
 # pprint library is used to make the output look more pretty
@@ -34,8 +35,7 @@ def hello1():
     mycol = mydb["customers"]
     myquery = { "address": "Highway 37"}
     mydoc = mycol.find_one(myquery)
-    print(mydoc)
-    return mydoc
+    return jsonify(mydoc)
     
 
 
