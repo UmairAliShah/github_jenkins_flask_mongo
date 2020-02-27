@@ -20,7 +20,7 @@ def hello():
     for database in databases:
         # databases
         pprint("database::" + str(database))
-    return str('abcaddd')
+    return str(database)
 
 
 if __name__ == "__main__":
