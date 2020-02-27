@@ -27,6 +27,7 @@ environment {
             steps {
                 script {
                     if (env.CHECK !=0) {
+                        echo "${env.CHECK}"
                         sh 'docker service rm flask'
                         sh 'dokcer servive rm mongo'
                     } else {
