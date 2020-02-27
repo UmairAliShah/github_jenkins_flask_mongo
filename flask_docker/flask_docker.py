@@ -25,7 +25,17 @@ def hello():
     for database in databases:
         # databases
         pprint("database::" + str(database))
-    return str(x)
+    return str('200')
+
+@app.route('/get')
+def hello1():
+    mydb = client["mydatabase"]
+    mycol = mydb["customers"]
+    myquery = { "address": "Highway 37"}
+    mydoc = mycol.find(myquery)
+    for x in mydoc:
+        return x
+    
 
 
 if __name__ == "__main__":
