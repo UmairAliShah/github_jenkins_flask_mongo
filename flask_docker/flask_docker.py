@@ -34,6 +34,7 @@ def hello1():
     mycol = mydb["customers"]
     myquery = { "address": "Highway 37"}
     mydoc = mycol.find_one(myquery)
+    print(mydoc)
     return mydoc
     
 
