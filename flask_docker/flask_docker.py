@@ -17,7 +17,7 @@ client = MongoClient(str(mongo)+config.MONGO_CONNECTION)
 
 @app.route('/')
 def hello():
-    mydb = myclient["mydatabase"]
+    mydb = client["mydatabase"]
     mycol = mydb["customers"]
     mydict = { "name": "John", "address": "Highway 37" }
     x = mycol.insert_one(mydict)
