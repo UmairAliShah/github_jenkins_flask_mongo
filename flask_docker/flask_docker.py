@@ -33,9 +33,8 @@ def hello1():
     mydb = client["mydatabase"]
     mycol = mydb["customers"]
     myquery = { "address": "Highway 37"}
-    mydoc = mycol.find(myquery)
-    for x in mydoc:
-        return ObjectId(x)
+    mydoc = mycol.find_one(myquery)
+    return mydoc
     
 
 
