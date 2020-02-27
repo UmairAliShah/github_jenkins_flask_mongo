@@ -4,6 +4,7 @@ pipeline {
 environment { 
         DOCKER_HUB_REPO    = "salmanilyas/flask_image"
         IMAGE_TAG   = "v1.00"
+        CHECK = 0
     }
     
     stages {
@@ -24,12 +25,9 @@ environment {
             }
         }
         stage('Deploy') {
-            environment {
-                CHECK = 0
-            }
             steps {
                 script {
-                    if (${env.CHECK} != 0) {
+                    if ($CHECK != 0) {
                         sh 'docker service rm flask'
                         sh 'docker servive rm mongo'
                     } else {
