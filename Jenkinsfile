@@ -24,7 +24,7 @@ environment {
         }
         stage('Deploy') {
             steps {
-                    sh 'docker service create --name flask --replicas 2 --publish 5011:5011 -e mongo=mongo --network my-ingress $DOCKER_HUB_REPO:$IMAGE_TAG'
+                    sh 'docker service create --name flask --replicas 4 --publish 5011:5011 -e mongo=mongo --network my-ingress $DOCKER_HUB_REPO:$IMAGE_TAG'
                     sh 'docker service create --name mongo --network my-ingress mongo'
             }
         }
