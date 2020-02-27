@@ -15,7 +15,9 @@ environment {
             }
         }
         stage('Build') {
-            steps { 
+            steps {
+                sh 'docker service rm flask'
+                sh 'docker service rm mongo'
                 echo  " Building ${env.BUILD_ID}" 
                 sh 'docker build -t $DOCKER_HUB_REPO:$IMAGE_TAG .'
                 sh 'docker push $DOCKER_HUB_REPO:$IMAGE_TAG'
@@ -24,8 +26,6 @@ environment {
         }
         stage('Deploy') {
             steps {
-                    sh 'docker service rm flask'
-                    sh 'docker service rm mongo'
                     sh 'docker service create --name flask --replicas 2 --publish 5011:5011 -e mongo=mongo --network my-ingress $DOCKER_HUB_REPO:$IMAGE_TAG'
                     sh 'docker service create --name mongo --network my-ingress mongo'
             }
