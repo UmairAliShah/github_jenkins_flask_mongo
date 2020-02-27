@@ -35,8 +35,8 @@ def hello1():
     mycol = mydb["customers"]
     myquery = {"address":"Highway 37"}
     mydoc = mycol.find_one(myquery)
-    print(mydoc)
-    return jsonify(mydoc)
+    resp = {'data': str(mydoc)}
+    return jsonify(resp)
     
 
 
