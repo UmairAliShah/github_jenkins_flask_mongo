@@ -4,7 +4,6 @@ pipeline {
 environment { 
         DOCKER_HUB_REPO    = "salmanilyas/flask_image"
         IMAGE_TAG   = "v1.00"
-        a = 0 
     }
     stages {
         stage('Config') {
