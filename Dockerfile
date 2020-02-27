@@ -1,12 +1,11 @@
 FROM python:3.6-alpine
 
-RUN mkdir -p /flask_docker
+WORKDIR /flask_docker
 
-COPY /flask_docker /flask_docker
-
-RUN apk add --no-cache git gcc python3-dev gpgme-dev libc-dev
-
+RUN apk add git gcc python3-dev gpgme-dev libc-dev
+COPY flask_docker/requirements.txt flask_docker/requirements.txt
 RUN pip install -r flask_docker/requirements.txt
+COPY . /flask_docker
 
 EXPOSE 5011
 
