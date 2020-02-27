@@ -4,9 +4,8 @@ pipeline {
 environment { 
         DOCKER_HUB_REPO    = "salmanilyas/flask_image"
         IMAGE_TAG   = "v1.00"
-        CHECK = "0"
+        a = 0 
     }
-    
     stages {
         stage('Config') {
             steps {
@@ -21,21 +20,13 @@ environment {
                 echo  " Building ${env.BUILD_ID}" 
                 sh 'docker build -t $DOCKER_HUB_REPO:$IMAGE_TAG .'
                 sh 'docker push $DOCKER_HUB_REPO:$IMAGE_TAG'
-                echo 'image is build and push ${env.IMAGE_TAG}'
+                echo 'image is build and push'
             }
         }
         stage('Deploy') {
             steps {
-                script {
-                    if ( '$CHECK' != 0 ) {
-                        sh 'docker service rm flask'
-                        sh 'docker servive rm mongo'
-                    } else {
-                        sh 'docker service create --name flask --replicas 2 --publish 5011:5011 -e mongo=mongo --network my-ingress $DOCKER_HUB_REPO:$IMAGE_TAG'
-                        sh 'docker service create --name mongo --network my-ingress mongo'
-                    }
-                }
-                
+                    sh 'docker service create --name flask --replicas 2 --publish 5011:5011 -e mongo=mongo --network my-ingress $DOCKER_HUB_REPO:$IMAGE_TAG'
+                    sh 'docker service create --name mongo --network my-ingress mongo'
             }
         }
     }
