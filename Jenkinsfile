@@ -6,6 +6,7 @@ environment {
         IMAGE_TAG   = "v1.00"
         CHECK = 0
     }
+    
     stages {
         stage('Config') {
             steps {
@@ -26,8 +27,8 @@ environment {
         stage('Deploy') {
             steps {
                 script {
-                    if ($CHECK !=0) {
-                        echo "$CHECK"
+                    if (${CHECK} !='0') {
+                        echo "${CHECK}"
                         sh 'docker service rm flask'
                         sh 'dokcer servive rm mongo'
                     } else {
