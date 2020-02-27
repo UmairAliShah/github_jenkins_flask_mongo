@@ -16,8 +16,6 @@ environment {
         }
         stage('Build') {
             steps {
-                sh 'docker service rm flask'
-                sh 'docker service rm mongo'
                 echo  " Building ${env.BUILD_ID}" 
                 sh 'docker build -t $DOCKER_HUB_REPO:$IMAGE_TAG .'
                 sh 'docker push $DOCKER_HUB_REPO:$IMAGE_TAG'
