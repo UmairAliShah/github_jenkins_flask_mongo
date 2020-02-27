@@ -15,7 +15,6 @@ mongo = os.environ['mongo']
 client = MongoClient(str(mongo)+config.MONGO_CONNECTION)
 
 
-.route("/add-patient", methods=[const.PUT])
 @app.route("/insert-data", methods['PUT'])
 def hello():
     mydb = myclient["mydatabase"]
