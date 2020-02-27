@@ -1,5 +1,6 @@
 from flask import Flask
 from flask import request
+from bson.objectid import ObjectId
 from pymongo import MongoClient
 # pprint library is used to make the output look more pretty
 from pprint import pprint
@@ -34,7 +35,7 @@ def hello1():
     myquery = { "address": "Highway 37"}
     mydoc = mycol.find(myquery)
     for x in mydoc:
-        return x
+        return ObjectId(x)
     
 
 
