@@ -12,15 +12,21 @@ import config as config
 
 app = Flask(__name__)
 mongo = os.environ['mongo']
+client = MongoClient(str(mongo)+config.MONGO_CONNECTION)
 
-@app.route("/")
+
+.route("/add-patient", methods=[const.PUT])
+@app.route("/insert-data", methods['PUT'])
 def hello():
-    client = MongoClient(str(mongo)+config.MONGO_CONNECTION)
+    mydb = myclient["mydatabase"]
+    mycol = mydb["customers"]
+    mydict = { "name": "John", "address": "Highway 37" }
+    x = mycol.insert_one(mydict)
     databases = client.list_database_names()
     for database in databases:
         # databases
         pprint("database::" + str(database))
-    return str(database)
+    return str(x)
 
 
 if __name__ == "__main__":
