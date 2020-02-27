@@ -27,8 +27,8 @@ environment {
         stage('Deploy') {
             steps {
                 script {
-                    if (${CHECK} !='0') {
-                        echo "${CHECK}"
+                    if (${env.CHECK} !=0) {
+                        echo "FOO = ${env.CHECK}"
                         sh 'docker service rm flask'
                         sh 'dokcer servive rm mongo'
                     } else {
