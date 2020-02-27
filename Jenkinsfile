@@ -4,7 +4,7 @@ pipeline {
 environment { 
         DOCKER_HUB_REPO    = "salmanilyas/flask_image"
         IMAGE_TAG   = "v1.00"
-        CHECK = 0
+        CHECK = 'aaa'
     }
     
     stages {
@@ -27,11 +27,12 @@ environment {
         stage('Deploy') {
             steps {
                 script {
-                    if (${env.CHECK} !=0) {
+                    if (${env.CHECK} ==0) {
                         echo "FOO = ${env.CHECK}"
                         sh 'docker service rm flask'
                         sh 'dokcer servive rm mongo'
                     } else {
+                        echo "FOO = ${env.CHECK}"
                         sh 'docker service create --name flask --replicas 2 --publish 5011:5011 -e mongo=mongo --network my-ingress $DOCKER_HUB_REPO:$IMAGE_TAG'
                         sh 'docker service create --name mongo --network my-ingress mongo'
                     }
