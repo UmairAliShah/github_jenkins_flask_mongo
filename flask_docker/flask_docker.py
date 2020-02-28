@@ -17,7 +17,7 @@ mongo = os.environ['mongo']
 client = MongoClient(str(mongo)+config.MONGO_CONNECTION)
 
 
-@app.route('/')
+@app.route('/insert')
 def hello():
     mydb = client["mydatabase"]
     mycol = mydb["customers"]
@@ -27,9 +27,9 @@ def hello():
     for database in databases:
         # databases
         pprint("database::" + str(database))
-    return str('2000')
+    return str('200')
 
-@app.route('/get')
+@app.route('/get-data')
 def hello1():
     mydb = client["mydatabase"]
     mycol = mydb["customers"]
